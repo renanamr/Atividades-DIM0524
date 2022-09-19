@@ -35,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
   void _calcularIMC(){
-    if (!_formKey.currentState.validate())
+    if (!_formKey.currentState!.validate())
       return;
 
     String message = "Verifique os dados e tente novamente";
@@ -71,9 +71,9 @@ class _MyHomePageState extends State<MyHomePage> {
           title: Text(title),
           content: Text(message),
           actions: [
-            FlatButton(
-                onPressed: ()=> Navigator.of(context).pop(),
-                child: Text("Ok"),
+            TextButton(
+              onPressed: ()=> Navigator.of(context).pop(),
+              child: Text("Ok"),
             )
           ],
         );
@@ -81,7 +81,7 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  String validateTextField(value) {
+  String? validateTextField(value) {
     if (value.isEmpty)
       return "Insira um valor!";
     else
