@@ -13,10 +13,18 @@ class TelaResultado extends StatelessWidget {
         title: Text("Resultado"),
       ),
       body: Column(
-        children: [
-          Center(child: Text(resultado!)),
-          Expanded(
-              child: Image.asset(imageUrl!)
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Image.asset(
+            imageUrl!,
+            fit: BoxFit.cover,
+            height: 300.0,
+          ),
+          Center(
+            child: Text(
+              resultado!,
+              style: TextStyle(fontSize: 22.0, fontStyle: FontStyle.italic),
+            ),
           )
         ],
       ),
