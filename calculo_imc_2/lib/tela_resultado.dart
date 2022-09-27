@@ -23,7 +23,7 @@ class TelaResultado extends StatelessWidget {
           Center(
             child: Text(
               resultado!,
-              style: TextStyle(fontSize: 22.0, fontStyle: FontStyle.italic),
+              style: TextStyle(fontSize: 22.0),
             ),
           )
         ],

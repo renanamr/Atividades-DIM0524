@@ -39,26 +39,33 @@ class _MyHomePageState extends State<MyHomePage> {
 
     try{
       String? message;
+      String? imageUrl;
       double peso = double.parse(_pesoController.text);
       double altura = double.parse(_alturaController.text) / 100;
 
       double imc = peso / (altura * altura);
 
-      if (imc < 18.6)
+      if (imc < 18.6) {
         message = "Abaixo do peso (${imc.toStringAsPrecision(4)})";
-      else if (imc >= 18.6 && imc < 24.9)
+        imageUrl = "assets/thin.png";
+      }else if (imc >= 18.6 && imc < 24.9) {
         message = "Peso ideal (${imc.toStringAsPrecision(4)})";
-      else if (imc >= 24.9 && imc < 29.9)
-        message = "Levemente acima do peso (${imc.toStringAsPrecision(4)})";
-      else if (imc >= 29.9 && imc < 34.9)
-        message = "Obesidade Grau I (${imc.toStringAsPrecision(4)})";
-      else if (imc >= 34.9 && imc < 39.9)
-        message = "Obesidade Grau II (${imc.toStringAsPrecision(4)})";
-      else if (imc >= 40)
-        message = "Obesidade Grau III (${imc.toStringAsPrecision(4)})";
+        imageUrl = "assets/shape.png";
+      }else{
+        imageUrl = "assets/fat.png";
+
+        if (imc >= 24.9 && imc < 29.9)
+          message = "Levemente acima do peso (${imc.toStringAsPrecision(4)})";
+        else if (imc >= 29.9 && imc < 34.9)
+          message = "Obesidade Grau I (${imc.toStringAsPrecision(4)})";
+        else if (imc >= 34.9 && imc < 39.9)
+          message = "Obesidade Grau II (${imc.toStringAsPrecision(4)})";
+        else if (imc >= 40)
+          message = "Obesidade Grau III (${imc.toStringAsPrecision(4)})";
+      }
 
       Navigator.of(context).push(MaterialPageRoute(
-          builder: (_)=> TelaResultado(resultado: message,))
+          builder: (_)=> TelaResultado(resultado: message, imageUrl: imageUrl,))
       );
 
     }catch(error){
